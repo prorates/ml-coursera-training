@@ -1,0 +1,96 @@
+1. Linear Regression
+
+ MATLAB 
+
+ex1-matlab-submission-scripts
+ZIP File
+Download file
+Octave
+
+ex1-octave-submission-scripts
+ZIP File
+Download file
+2 Logistic Regression
+
+MATLAB
+
+ex2-matlab-submission-scripts
+ZIP File
+Download file
+Octave
+
+ex2-octave-submission-scripts
+ZIP File
+Download file
+3. Multi-class Classification and Neural Networks
+
+MATLAB
+
+ex3-matlab-submission-scripts
+ZIP File
+Download file
+Octave
+
+ex3-octave-submission-scripts
+ZIP File
+Download file
+4. Neural Network Learning
+
+MATLAB
+
+ex4-matlab-submission-scripts
+ZIP File
+Download file
+Octave
+
+ex4-octave-submission-scripts
+ZIP File
+Download file
+5. Regularized Linear Regression and Bias/Variance
+
+MATLAB
+
+ex5-matlab-submission-scripts
+ZIP File
+Download file
+Octave
+
+ex5-octave-submission-scripts
+ZIP File
+Download file
+6. Support Vector Machines
+
+MATLAB
+
+ex6-matlab-submission-scripts
+ZIP File
+Download file
+Octave
+
+ex6-octave-submission-scripts
+ZIP File
+Download file
+7. K-Means Clustering and PCA
+
+MATLAB
+
+ex7-matlab-submission-scripts
+ZIP File
+Download file
+Octave
+
+ex7-octave-submission-scripts
+ZIP File
+Download file
+8. Anomaly Detection and Recommender Systems 
+
+MATLAB
+
+ex8-matlab-submission-scripts
+ZIP File
+Download file
+Octave
+
+ex8-octave-submission-scripts
+ZIP File
+Download file

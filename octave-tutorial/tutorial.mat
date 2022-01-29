@@ -1,0 +1,112 @@
+t
+    3 # Octave 6.2.0, Sat Jan 22 21:34:27 2022 EST <tensorflow@tensorflow3>
+    4 help
+    5 help plot
+    6 2+3
+    7 exit
+    8 # Octave 6.2.0, Sat Jan 22 22:26:18 2022 EST <tensorflow@tensorflow3>
+    9 help plot
+   10 helpt
+   11 exit
+   12 # Octave 6.2.0, Sat Jan 22 22:43:33 2022 EST <tensorflow@tensorflow3>
+   13 A=[1 2;3 4;5 6]
+   14 v=[1 2 3]
+   15 v=[1;2;3]
+   16 v=1:0.1:2
+   17 v=1:6
+   18 eye(4)
+   19 who
+   20 whos
+   21 clear A
+   22 whos
+   23 disp(A)
+   24 history
+   25 !13
+   26 A
+   27 disp(A)
+   28 A=[1 2;3 4;5 6]
+   29 disp(A)
+   30 save hello.txt A
+   31 A(3,3)
+   32 A(3,2)
+   33 A(2,:)
+   34 A(:,2)
+   35 A([1 3],:)
+   36 A([1 1],:)
+   37 A([1 2],:)
+   38 A([1 5],:)
+   39 A([1 3],:)
+   40 A([1 2],:)
+   41 A([1 1],:)
+   42 A([1 2],:)
+   43 A([1 3],:)
+   44 A(:,2)=[10.11.12]
+   45 A(:,2)=[10;11;12]
+   46 A
+   47 A=[A; [33;44;55]]
+   48 A=[A, [33;44;55]]
+   49 A(:)
+   50 B=[1,2;3,4;5,6]
+   51 C=[A B]
+   52 C=[A; B]
+   53 B=[B; [1;2;3]]
+   54 B=[B [1;2;3]]
+   55 C=[A; B]
+   56 B*C
+   57 C*B
+   58 A .* B
+   59 A
+   60 B
+   61 A .^ 2
+   62 V=[1;2;3]
+   63 1 ./ v
+   64 1 ./ V
+   65 log(V)
+   66 whos
+   67 who
+   68 log(V)
+   69 abs(V)
+   70 -V
+   71 ones(length(V),1)
+   72 V + ones(length(V),1)
+   73 V
+   74 V  + 1
+   75 A'
+   76 (A')'
+   77 max(A)
+   78 A
+   79 a < 10
+   80 A < 10
+   81 find (A < 10)
+   82 B = magic(3)
+   83 sum(A)
+   84 prod(A)
+   85 floor(A)
+   86 floor(A)
+   87 ceil(A)
+   88 rand(3)
+   89 max(rand(3),rand(3))
+   90 max(A,[],1)
+   91 max(A,[],2)
+   92 A
+   93 max(A)
+   94 max(max(A))
+   95 A=magic(9)
+   96 sum(A,1)
+   97 sum(A,2)
+   98 eye(9(
+   99 eye(9)
+  100 )
+  101 )
+  102 eye(9)
+  103 A * eye(9)
+  104 A .* eye(9)
+  105 A
+  106 sum(sum(A.*eye(9)))
+  107 flipud(eye(9))
+  108 A.*flipud(eye(9))
+  109 A=magic(3)
+  110 pinv(A)
+  111 temp=pinv(A)
+  112 temp*A
+  113 history
