@@ -106,6 +106,11 @@ fprintf('\n');
 % not need to be normalized.
 price = 0; % You should change this
 
+features = [1650 3]; 
+features = (features - mu) ./ sigma; % normalize the feature. This is where mu and sigma are usefull
+features = [ones(1, 1) features];    % add the x0
+price = features * theta;            % compute the price
+
 
 % ============================================================
 
@@ -150,6 +155,11 @@ fprintf('\n');
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
 price = 0; % You should change this
+
+features = [1650 3]; 
+% features = ([1650 3] - mu) ./ sigma;  % no normalisation
+features = [ones(1, 1) features];       % add the x0
+price = features * theta;               % compute the price
 
 
 % ============================================================
