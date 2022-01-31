@@ -16,8 +16,9 @@ figure; % open a new figure window
 %       appear as red crosses. Furthermore, you can make the
 %       markers larger by using plot(..., 'rx', 'MarkerSize', 10);
 
-
-
+H = plot(x, y, 'rx', 'MarkerSize', 10 );  % Plot the data
+xlabel('Popultation of City in 10,000s'); % Set the y-axis label
+ylabel('Profit in $10,000s');             % Set the x-axis laebl
 
 
 % ============================================================

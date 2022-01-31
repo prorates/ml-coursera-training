@@ -17,7 +17,9 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
+    for i = 1:m
 
+    end
 
 
 
