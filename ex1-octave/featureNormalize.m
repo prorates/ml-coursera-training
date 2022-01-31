@@ -7,6 +7,7 @@ function [X_norm, mu, sigma] = featureNormalize(X)
 
 % You need to set these values correctly
 X_norm = X;
+X_norm_method2 = X;
 mu = zeros(1, size(X, 2));
 sigma = zeros(1, size(X, 2));
 
@@ -26,13 +27,18 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
+mu = mean(X);
+sigma = std(X);
+X_norm = (X - mu) ./ sigma;
 
+% features = 1:size(X, 2);
+% for i = features,
+%   XminusMu  = X(:, i) - mu(i);
+%   X_norm_method2(:, i) = XminusMu / sigma(i);
+% end
 
-
-
-
-
-
+% fprintf('X_norm method 1 = [%.0f %.0f], X_norm_method 2 [%.0f %.0f]\n', [X_norm(1:10,:) X_norm_method2(1:10,:)]');
+% fprintf('Difference between methods [%.0f %.0f]\n', sum(X_norm - X_norm_method2))
 
 % ============================================================
 
