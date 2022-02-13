@@ -21,16 +21,22 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
-% create layer1
+% create layer 1
 a1 = X;
 
-% compute layer 2
+% compute layer 2. Theta1 is 5000*401. a1 is 25*401
 a1 = [ones(size(a1, 1), 1) a1];
+% a1 is 5000 * (400 + 1)
+% Theta1 is 25 * (400 + 1)
+% z2 = Theta1 * a1;
 z2 = a1 * Theta1';
 a2 = sigmoid(z2);
 
-% compute layer 3
+% compute layer 3. 
 a2 = [ones(size(a2, 1), 1) a2];
+% a2 is 400 * (25 + 1)
+% Theta2 is 10 * (25 + 1)
+% z3 = Theta2 * a2;
 z3 = a2 * Theta2';
 a3 = sigmoid(z3);
 
