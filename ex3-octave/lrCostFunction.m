@@ -37,13 +37,18 @@ grad = zeros(size(theta));
 %
 
 
+h = sigmoid(X*theta);
 
+% Last code exercise without regularization
+% J = 1/m*((-y)'*log(h)-(1-y)'*log(1-h));
+% grad = (X'*(h - y))/m;
 
-
-
-
-
-
+% Last code exercise with regularization
+% thetawithout0 = [0 ; theta(2:size(theta), :)];
+thetawithout0 = [0 ; theta(2:end, :)];
+penality = lambda*(thetawithout0'*thetawithout0)/(2*m);
+J = ((-y)'*log(h)-(1-y)'*log(1-h))/m + penality;
+grad = (X'*(h - y) + lambda*thetawithout0)/m;
 
 % =============================================================
 
