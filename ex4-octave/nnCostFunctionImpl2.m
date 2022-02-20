@@ -1,4 +1,4 @@
-function [J grad] = nnCostFunction(nn_params, ...
+function [J grad] = nnCostFunctionImpl2(nn_params, ...
                                    input_layer_size, ...
                                    hidden_layer_size, ...
                                    num_labels, ...
@@ -62,25 +62,16 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
-% create layer 1
-a1 = X;
-
-% compute layer 2. Theta1 is 5000*401. a1 is 25*401
-a1 = [ones(size(a1, 1), 1) a1];
+a1 = [ones(m, 1) X];
 z2 = a1 * Theta1';
 a2 = sigmoid(z2);
-
-% compute layer 3. 
-a2 = [ones(size(a2, 1), 1) a2];
+a2 = [ones(m, 1) a2];
 z3 = a2 * Theta2';
-a3 = sigmoid(z3);
-
-% ex3/predict.m used to return:
-% [~, p] = max(a3, [], 2);
+htheta = sigmoid(z3);
 
 for k = 1:num_labels
     yk = y == k;
-    hthetak = a3(:, k);
+    hthetak = htheta(:, k);
     Jk = 1 / m * sum(-yk .* log(hthetak) - (1 - yk) .* log(1 - hthetak));
     J = J + Jk;
 end
@@ -92,7 +83,7 @@ J = J + regularization;
 for t = 1:m
     for k = 1:num_labels
         yk = y(t) == k;
-        delta_3(k) = a3(t, k) - yk;
+        delta_3(k) = htheta(t, k) - yk;
     end
     delta_2 = Theta2' * delta_3' .* sigmoidGradient([1, z2(t, :)])';
     delta_2 = delta_2(2:end);
@@ -107,6 +98,23 @@ Theta2_grad = Theta2_grad / m;
 
 Theta1_grad(:, 2:end) = Theta1_grad(:, 2:end) + lambda / m * Theta1(:, 2:end);
 Theta2_grad(:, 2:end) = Theta2_grad(:, 2:end) + lambda / m * Theta2(:, 2:end);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 % -------------------------------------------------------------
 

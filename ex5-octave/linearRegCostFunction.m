@@ -19,16 +19,18 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+% see costFunctionReg in ex2
+% h = sigmoid(X*theta);
+h = X*theta;
 
+% calculate cost function
+thetawithout0 = [0 ; theta(2:end, :)];
+penality = lambda*(thetawithout0'*thetawithout0)/(2*m);
+% see costFunctionReg in ex2
+% J = ((-y)'*log(h)-(1-y)'*log(1-h))/m + penality;
+J = ((h - y)'*(h - y))/(2*m) + penality;
 
-
-
-
-
-
-
-
-
+grad = (X'*(h - y) + lambda*thetawithout0)/m;
 
 % =========================================================================
 

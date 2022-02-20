@@ -1,4 +1,4 @@
-function [J grad] = nnCostFunction(nn_params, ...
+function [J grad] = nnCostFunctionImpl1(nn_params, ...
                                    input_layer_size, ...
                                    hidden_layer_size, ...
                                    num_labels, ...
@@ -62,51 +62,64 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
-% create layer 1
-a1 = X;
+% recode y to Y
+I = eye(num_labels);
+Y = zeros(m, num_labels);
+for i=1:m
+  Y(i, :)= I(y(i), :);
+end
 
-% compute layer 2. Theta1 is 5000*401. a1 is 25*401
-a1 = [ones(size(a1, 1), 1) a1];
-z2 = a1 * Theta1';
-a2 = sigmoid(z2);
-
-% compute layer 3. 
-a2 = [ones(size(a2, 1), 1) a2];
-z3 = a2 * Theta2';
+% feedforward
+a1 = [ones(m, 1) X];
+z2 = a1*Theta1';
+a2 = [ones(size(z2, 1), 1) sigmoid(z2)];
+z3 = a2*Theta2';
 a3 = sigmoid(z3);
+h = a3;
 
-% ex3/predict.m used to return:
-% [~, p] = max(a3, [], 2);
+% calculte penalty
+p = sum(sum(Theta1(:, 2:end).^2, 2))+sum(sum(Theta2(:, 2:end).^2, 2));
 
-for k = 1:num_labels
-    yk = y == k;
-    hthetak = a3(:, k);
-    Jk = 1 / m * sum(-yk .* log(hthetak) - (1 - yk) .* log(1 - hthetak));
-    J = J + Jk;
-end
+% calculate J
+J = sum(sum((-Y).*log(h) - (1-Y).*log(1-h), 2))/m + lambda*p/(2*m);
 
-regularization = lambda / (2 * m) * (sum(sum(Theta1(:, 2:end) .^ 2)) + sum(sum(Theta2(:, 2:end) .^ 2)));
-J = J + regularization;
+% calculate sigmas
+sigma3 = a3.-Y;
+sigma2 = (sigma3*Theta2).*sigmoidGradient([ones(size(z2, 1), 1) z2]);
+sigma2 = sigma2(:, 2:end);
+
+% accumulate gradients
+delta_1 = (sigma2'*a1);
+delta_2 = (sigma3'*a2);
+
+% calculate regularized gradient
+p1 = (lambda/m)*[zeros(size(Theta1, 1), 1) Theta1(:, 2:end)];
+p2 = (lambda/m)*[zeros(size(Theta2, 1), 1) Theta2(:, 2:end)];
+Theta1_grad = delta_1./m + p1;
+Theta2_grad = delta_2./m + p2;
+
+% -------------------------------------------------------------
+
+% =========================================================================
+
+% Unroll gradients
+grad = [Theta1_grad(:) ; Theta2_grad(:)];
 
 
-for t = 1:m
-    for k = 1:num_labels
-        yk = y(t) == k;
-        delta_3(k) = a3(t, k) - yk;
-    end
-    delta_2 = Theta2' * delta_3' .* sigmoidGradient([1, z2(t, :)])';
-    delta_2 = delta_2(2:end);
-
-    Theta1_grad = Theta1_grad + delta_2 * a1(t, :);
-    Theta2_grad = Theta2_grad + delta_3' * a2(t, :);
-end
-
-Theta1_grad = Theta1_grad / m;
-Theta2_grad = Theta2_grad / m;
 
 
-Theta1_grad(:, 2:end) = Theta1_grad(:, 2:end) + lambda / m * Theta1(:, 2:end);
-Theta2_grad(:, 2:end) = Theta2_grad(:, 2:end) + lambda / m * Theta2(:, 2:end);
+
+
+
+
+
+
+
+
+
+
+
+
 
 % -------------------------------------------------------------
 
