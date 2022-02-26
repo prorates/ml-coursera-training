@@ -54,10 +54,19 @@ error_val   = zeros(m, 1);
 % ---------------------- Sample Solution ----------------------
 
 
+for i= 1:m
+    % lambda is set not set to 0
+    % train on the first i examples
+    theta          = trainLinearReg(X(1:i,:), y(1:i), lambda);
 
+    % lambda is set to 0
+    % evaluate the training error on the first i examples
+    error_train(i) = linearRegCostFunction(X(1:i,:), y(1:i), theta, 0);
 
-
-
+    % lambda is set to 0
+    % cross validation error is evalutated on the entire cross validation set
+    error_val(i)   = linearRegCostFunction(Xval, yval, theta, 0);
+end
 
 % -------------------------------------------------------------
 
