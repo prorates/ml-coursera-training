@@ -26,12 +26,24 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
+for i=1:K
+    indices = idx == i;
+    for j=1:n
+        centroids(i, j) = sum(X(:, j) .* indices) / sum(indices);
+    end
+end
 
-
-
-
-
-
+% for k = 1:K
+%   num_k = 0;
+%   sum = zeros(n, 1);
+%   for i = 1:m
+%     if ( idx(i) == k )
+%       sum = sum + X(i, :)';
+%       num_k = num_k + 1;
+%     end
+%   end
+%   centroids(k, :) = (sum/num_k)';
+% end
 
 % =============================================================
 
