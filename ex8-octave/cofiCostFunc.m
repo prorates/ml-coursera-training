@@ -40,13 +40,18 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
-diff = (X*Theta'-Y);
-J = sum((diff.^2)(R==1))/2;
+delta = (X*Theta'-Y);
+
+# Accumalate the cost only if R is 1
+J = sum((delta.^2)(R==1))/2;
+
+
 J = J + lambda*sum(sum(Theta.^2))/2;
 J = J + lambda*sum(sum(X.^2))/2;
 
-X_grad = (diff.*R)*Theta;
-Theta_grad = ((diff.*R)'*X);
+# Collaborative filtering gradient
+X_grad = (delta.*R)*Theta;
+Theta_grad = ((delta.*R)'*X);
 
 X_grad = X_grad + (lambda * X);
 Theta_grad = Theta_grad + (lambda * Theta);

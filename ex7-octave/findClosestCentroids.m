@@ -22,11 +22,11 @@ idx = zeros(size(X,1), 1);
 %
 
 for i=1:length(X)
-    distance = inf;
+    min_d = inf;
     for j=1:K
-        kDist = norm(X(i, :) - centroids(j, :));
-        if (kDist < distance)
-            distance = kDist;
+        d = norm(X(i, :) - centroids(j, :));
+        if (d < min_d)
+            min_d = d;
             idx(i) = j;
         end
     end
